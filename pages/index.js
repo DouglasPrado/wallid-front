@@ -49,43 +49,8 @@ export default function Home({ balance, accounts }) {
 }
 
 export async function getStaticProps() {
-  // const res = await fetch("http://127.0.0.1:8000/api/accounts");
-  // const accounts = await res.json();
-  const accounts = [
-    {
-      name: "Staking",
-      balance: "R$ 1.000,00"
-    },
-    {
-      name: "Conta Digital",
-      balance: "R$ 10.000,00"
-    },
-    {
-      name: "Binance",
-      balance: "U$ 4.000,00"
-    },
-    {
-      name: "Bitcoin",
-      balance: "U$ 40.000,00"
-    },
-    {
-      name: "Renda Fixa",
-      balance: "U$ 4.000,00"
-    },
-    {
-      name: "Renda Fixa",
-      balance: "U$ 4.000,00"
-    },
-    {
-      name: "Renda Fixa",
-      balance: "U$ 4.000,00"
-    },
-    {
-      name: "Renda Fixa",
-      balance: "U$ 4.000,00"
-    },
-
-  ];
+  const res = await fetch("https://wallid.herokuapp.com/api/accounts/?format=json");
+  const accounts = await res.json();
 
   const balance = {
     balance: "R$ 11.000,00"
