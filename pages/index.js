@@ -10,7 +10,7 @@ export default function Home({ balance, accounts }) {
 
       <main className="flex flex-col items-center justify-around w-full flex-1 text-center">
         <div className="flex items-stretch">
-          <div className="box-border h-52 w-52 rounded-full shadow-md py-20 border-4 border-gray-50">
+          <div className="box-border h-52 w-52 rounded-full shadow-md py-20 border-4 border-gray-50 m-10">
             <span className="text-2xl font-semibold uppercase text-gray-500">{balance.balance}</span> <br/>
             <span className="text-sm text-gray-500">
               <div className="flex items-center justify-center">
@@ -25,7 +25,7 @@ export default function Home({ balance, accounts }) {
           </div>
         </div>
         <div class="container">
-          <ul className="px-5">
+          <ul className="px-5 mb-20">
           { accounts.map((account) => (
             <li x-for="item in items" class="rounded-lg shadow-md border border-gray-50 mt-5">
             <div class="grid grid-flow-col grid-rows-1 grid-cols-3">
