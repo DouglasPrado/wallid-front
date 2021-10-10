@@ -36,7 +36,7 @@ export default function Home({ balance, accounts }) {
                 
               </div>
               <div className="text-lime-600 dark:text-lime-400 text-sm sm:text-base lg:text-sm xl:text-base uppercase text-xl text-gray-500 p-8 col-span-2">
-                {account.balance}
+                {account.balance_initial_currency} {account.balance_initial}
               </div>
             </div>
           </li>
