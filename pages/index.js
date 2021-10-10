@@ -25,7 +25,7 @@ export default function Home({ balance, accounts }) {
           </div>
         </div>
         <div class="container">
-          <ul className="px-5 overflow-auto h-96">
+          <ul className="px-5 overflow-auto">
           { accounts.map((account) => (
             <li x-for="item in items" class="rounded-lg shadow-md border border-gray-50 mt-5">
             <div class="grid grid-flow-col grid-rows-1 grid-cols-3">
