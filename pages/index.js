@@ -1,6 +1,20 @@
 import Head from 'next/head'
 
-export default function Home({ balance, accounts }) {
+export default function Home() {
+  function getStaticProps() {
+    const res = await fetch("https://wallid.herokuapp.com/api/accounts/?format=json");
+    const accounts = await res.json();
+  
+    const balance = {
+      balance: "R$ 11.000,00"
+    }
+    return {
+      balance,
+      accounts,
+    }
+  }
+  const { balance, accounts } = getStaticProps();
+  
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
@@ -48,17 +62,3 @@ export default function Home({ balance, accounts }) {
   )
 }
 
-export async function getStaticProps() {
-  const res = await fetch("https://wallid.herokuapp.com/api/accounts/?format=json");
-  const accounts = await res.json();
-
-  const balance = {
-    balance: "R$ 11.000,00"
-  }
-  return {
-    props: {
-      balance,
-      accounts,
-    },
-  };
-}
