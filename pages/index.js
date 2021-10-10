@@ -49,7 +49,7 @@ export default function Home({ balance, accounts }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://127.0.0.1:8000/api/accounts");
+  // const res = await fetch("http://127.0.0.1:8000/api/accounts");
   // const accounts = await res.json();
   const accounts = [
     {
