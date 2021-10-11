@@ -66,7 +66,7 @@ export default function Home() {
                     
                   </div>
                   <div className="text-lime-600 dark:text-lime-400 text-sm sm:text-base lg:text-sm xl:text-base uppercase text-xl text-gray-500 p-8 col-span-2">
-                  { currencyFormat(category.currency, parseInt(category.balance_total) ) }
+                  { category.get_balance_total }
                   </div>
                 </div>
               </li>)
