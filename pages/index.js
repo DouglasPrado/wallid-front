@@ -6,7 +6,7 @@ export default function Home() {
   const [ balance, setBalance ] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/accounts/?format=json")
+    fetch("https://wallid.herokuapp.com/api/accounts/?format=json")
       .then(res => res.json())
       .then((data) => {
         console.log(data)
@@ -67,7 +67,7 @@ export default function Home() {
       </div>
     )
   }else{
-    return (<h1>Error data!</h1>)
+    return (<h1>Carregando...</h1>)
   }
 }
 
