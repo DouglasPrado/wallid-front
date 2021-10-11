@@ -6,7 +6,7 @@ export default function Home() {
   const [ balance, setBalance ] = useState({})
   
   useEffect(() => {
-    fetch("http://localhost:8000/api/balance/?format=json")
+    fetch("https://wallid.herokuapp.com/api/balance/?format=json")
       .then(res => res.json())
       .then(({ balance }) => {
         setBalance(balance)
