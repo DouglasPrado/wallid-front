@@ -6,16 +6,20 @@ export default function Home() {
   const [ balance, setBalance ] = useState([])
 
   useEffect(() => {
-    fetch("https://wallid.herokuapp.com/api/accounts/?format=json")
+    fetch("http://localhost:8000/api/accounts/?format=json")
       .then(res => res.json())
       .then((data) => {
-          setAccounts(data);
-          setBalance({
-            balance: "R$ 11.000,00"
-          })
+        console.log(data)
+        setAccounts(data);
+        setBalance({
+          balance: "R$ 11.000,00"
+        })
       })
+      .catch(function(error) {  
+        console.log('Request failed', error)  
+      });
   }, [])
-  console.log(accounts.length)
+
   if (accounts.length > 0) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
