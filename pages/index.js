@@ -35,7 +35,7 @@ export default function Home() {
         <main className="flex flex-col items-center justify-around w-full flex-1 text-center">
           <div className="flex items-stretch">
             <div className="box-border h-52 w-52 rounded-full shadow-md py-20 border-4 border-gray-50 m-10">
-              <span className="text-2xl font-semibold uppercase text-gray-500">{balance.BRL}</span> <br/>
+              <span className="text-2xl font-semibold uppercase text-gray-500">{balance.total}</span> <br/>
               <span className="text-sm text-gray-500">
                 <div className="flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
