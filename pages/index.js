@@ -1,29 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import Head from 'next/head'
 
-export default function Home() {
-  const [ categories, setCategories ] = useState([])
-  const [ balance, setBalance ] = useState({})
+export default function Home({ categories, balance }) {
   const [blur, setBlur] = useState(`blur`)
-  useEffect(() => {
-    fetch("https://wallid.herokuapp.com/api/balance/?format=json")
-      .then(res => res.json())
-      .then(({ balance }) => {
-        setBalance(balance)
-      })
-      .catch(function(error) {  
-        console.log('Request failed', error)  
-      });
-    fetch("https://wallid.herokuapp.com/api/categories/?format=json")
-      .then(res => res.json())
-      .then((data) => {
-        setCategories(data);
-      })
-      .catch(function(error) {  
-        console.log('Request failed', error)  
-      });
-  }, [])
-
   const clickBlur = useCallback(() => {
     if(!blur) {
       setBlur('blur')
@@ -62,14 +41,14 @@ export default function Home() {
             { categories.map((category, index) => {
               if(category.get_balance_total != "0"){
                 return (
-                <li key={index} x-for="item in items" className="rounded-lg shadow-md border border-gray-50 mt-5">
-                <div className="grid grid-flow-col grid-rows-1 grid-cols-3">
-                  <div className="flex flex-wrap content-center justify-center">
-                    <p className="text-gray-800 dark:text-gray-400 text-xs sm:text-base lg:text-sm xl:text-base font-semibold uppercase text-gray-800">
-                      {category.name}
+                <li key={index} x-for="item in items" className="rounded-lg shadow-md border border-gray-100 mt-5">
+                <div className="grid grid-flow-col grid-rows-1 grid-cols-4">
+                  <div className="flex flex-wrap content-center justify-center col-span-2">              
+                    <p className="text-sm font-semibold uppercase text-gray-800">
+                    {category.name}
                     </p>
                   </div>
-                  <div className={`text-lime-600 dark:text-lime-400 text-sm sm:text-base lg:text-sm xl:text-base uppercase text-xl text-gray-500 p-8 col-span-2 ${blur}`} >
+                  <div className={`text-base uppercase text-gray-500 p-8 ${blur} col-span-2 text-right`} >
                   { category.get_balance_total }
                   </div>
                 </div>
@@ -86,3 +65,25 @@ export default function Home() {
   }
 }
 
+export async function getServerSideProps(context) {
+  const fetchCategories = await fetch("https://wallid.herokuapp.com/api/categories/?format=json") 
+  const categories = await fetchCategories.json()
+  if (!categories) {
+    return {
+      notFound: true,
+    }
+  }
+  const fetchBalance = await fetch("https://wallid.herokuapp.com/api/balance/?format=json") 
+  const { balance } = await fetchBalance.json()
+  if (!balance) {
+    return {
+      notFound: true,
+    }
+  }
+  return {
+    props: {
+      categories,
+      balance
+    }, // will be passed to the page component as props
+  }
+}
