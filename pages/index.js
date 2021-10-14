@@ -45,7 +45,7 @@ export default function Home({ categories, balance }) {
                     <li key={index} x-for="item in items" className="rounded-lg shadow-md border border-gray-100 mt-5">
                     <div className="grid grid-flow-col grid-rows-1 grid-cols-4">
                       <div className="flex flex-wrap content-center justify-center col-span-2">              
-                        <p className="text-sm font-semibold uppercase text-gray-800">
+                        <p className="text-sm font-semibold uppercase text-gray-600">
                         {category.name}
                         </p>
                       </div>
