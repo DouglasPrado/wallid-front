@@ -21,7 +21,7 @@ export default function Home({ categories, balance }) {
 
         <main className="flex flex-col items-center justify-around w-full flex-1 text-center">
           <div className="flex items-stretch">
-            <div className="box-border h-52 w-52 rounded-full shadow-lg py-20 border-4 border-indigo-500 m-10">
+            <div className="box-border h-52 w-52 rounded-full shadow-lg py-20 border-4 border-gray-500 m-10">
               <span className={`text-2xl font-semibold uppercase text-gray-500 ${blur}`} >{balance.total}</span> <br/>
               <span className="text-sm text-gray-500">
                 <div className="flex items-center justify-center">
@@ -41,18 +41,20 @@ export default function Home({ categories, balance }) {
             { categories.map((category, index) => {
               if(category.get_balance_total != "0"){
                 return (
-                <li key={index} x-for="item in items" className="rounded-lg shadow-md border border-gray-100 mt-5">
-                <div className="grid grid-flow-col grid-rows-1 grid-cols-4">
-                  <div className="flex flex-wrap content-center justify-center col-span-2">              
-                    <p className="text-sm font-semibold uppercase text-gray-800">
-                    {category.name}
-                    </p>
-                  </div>
-                  <div className={`text-base uppercase text-gray-500 p-8 ${blur} col-span-2 text-right`} >
-                  { category.get_balance_total }
-                  </div>
-                </div>
-              </li>)
+                  <a href={`/produtos/${category.name}`}>
+                    <li key={index} x-for="item in items" className="rounded-lg shadow-md border border-gray-100 mt-5">
+                    <div className="grid grid-flow-col grid-rows-1 grid-cols-4">
+                      <div className="flex flex-wrap content-center justify-center col-span-2">              
+                        <p className="text-sm font-semibold uppercase text-gray-800">
+                        {category.name}
+                        </p>
+                      </div>
+                      <div className={`text-base uppercase text-gray-500 p-8 ${blur} col-span-2 text-right`} >
+                      { category.get_balance_total }
+                      </div>
+                    </div>
+                  </li>
+                </a>)
               }}
             )}
             </ul>
