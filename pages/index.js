@@ -5,7 +5,7 @@ export default function Home({ categories, balance }) {
   const [blur, setBlur] = useState(`blur`)
   const clickBlur = useCallback(() => {
     if(!blur) {
-      setBlur('blur-sm')
+      setBlur('blur-lg')
     }else{
       setBlur(null)
     }
