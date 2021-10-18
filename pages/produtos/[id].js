@@ -14,20 +14,28 @@ export default function Produtos({ category, categories }) {
         </Head>
 
         <main className="flex flex-col items-center justify-around w-full flex-1 text-center">
-          <div className="container">
-              <div className="grid grid-flow-col grid-rows-1 grid-cols-3 my-5">
-                <div className="px-5">
+          <div className="flex-5 container my-5 px-5">
+              <div className="grid grid-flow-col grid-rows-1 grid-cols-12">
+                <div className="col-span-1">
                   <button onClick={() => router.back()}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                   </button>
                 </div>
-                <span className={`text-xl font-semibold uppercase text-gray-500`} >{category.name}</span>
+                
+                <div className="col-span-11">
+                  <span className={`text-xl font-semibold uppercase text-gray-500`} >{category.name}</span>
+                </div>
               </div>
-              <span className={`text-base font-light text-gray-500`} >{category.get_balance_total}</span> 
+              <div className="grid grid-flow-col grid-rows-1 grid-cols-12">
+                <div className="col-span-1"></div>
+                <div className="col-span-11">
+                  <span className={`text-base font-light text-gray-500`} >{category.get_balance_total}</span> 
+                </div>
+              </div>
             </div>
-          <div className="container">
+          <div className="flex-1 container ">
             <ul className="px-5 mb-20">
             { categories.map((categor, index) => {
               if(categor.balance != "0"){
