@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
-export default function Produtos({ slug, categories, balance }) {
+export default function Produtos({ category, categories }) {
+  const router = useRouter()
+
   if (categories.length > 0) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -11,25 +14,33 @@ export default function Produtos({ slug, categories, balance }) {
         </Head>
 
         <main className="flex flex-col items-center justify-around w-full flex-1 text-center">
-          <div className="container px-5 ">
-              <div className="box-border border-b-4 border-yellow-200 px-10 py-2">
-                <span className={`text-xl font-semibold uppercase text-gray-500`} >{slug}</span> 
+          <div className="container">
+              <div className="grid grid-flow-col grid-rows-1 grid-cols-3 my-5">
+                <div className="px-5">
+                  <a href={() => router.back()}>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                  </a>
+                </div>
+                <span className={`text-xl font-semibold uppercase text-gray-500`} >{category.name}</span>
               </div>
+              <span className={`text-base font-light text-gray-500`} >{category.get_balance_total}</span> 
             </div>
           <div className="container">
             <ul className="px-5 mb-20">
-            { categories.map((category, index) => {
-              if(category.get_balance_total != "0"){
+            { categories.map((categor, index) => {
+              if(categor.balance != "0"){
                 return (
                 <li key={index} x-for="item in items" className="rounded-lg shadow-md border border-gray-100 mt-5">
                 <div className="grid grid-flow-col grid-rows-1 grid-cols-4">
                   <div className="flex flex-wrap content-center justify-center col-span-2">              
                     <p className="text-sm font-semibold uppercase text-gray-800">
-                    {category.name}
+                    {categor.name}
                     </p>
                   </div>
                   <div className={`text-base uppercase text-gray-500 p-8 col-span-2 text-right`} >
-                  { category.get_balance_total }
+                  { categor.balance }
                   </div>
                 </div>
               </li>)
@@ -47,26 +58,27 @@ export default function Produtos({ slug, categories, balance }) {
 }
 
 export async function getServerSideProps({ params }) {
-  const slug = params.slug
-  const fetchCategories = await fetch("https://wallid.herokuapp.com/api/categories/?format=json") 
-  const categories = await fetchCategories.json()
+  const id = params.id
+  const fetchCategory = await fetch(`https://wallid.herokuapp.com/api/categories/${id}?format=json`) 
+  const category = await fetchCategory.json()
+  if (!category) {
+    return {
+      notFound: true,
+    }
+  }
+
+  const fetchCategoryAccounts = await fetch(`https://wallid.herokuapp.com/api/categories/${id}/accounts?format=json`) 
+  const categories = await fetchCategoryAccounts.json()
   if (!categories) {
     return {
       notFound: true,
     }
   }
-  const fetchBalance = await fetch("https://wallid.herokuapp.com/api/balance/?format=json") 
-  const { balance } = await fetchBalance.json()
-  if (!balance) {
-    return {
-      notFound: true,
-    }
-  }
+
   return {
     props: {
-      slug,
+      category,
       categories,
-      balance
     }, // will be passed to the page component as props
   }
 }
