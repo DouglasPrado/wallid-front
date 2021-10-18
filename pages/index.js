@@ -68,7 +68,7 @@ export default function Home({ categories, balance }) {
 }
 
 export async function getServerSideProps(context) {
-  const fetchCategories = await fetch("http://localhost:8000/api/categories/?format=json") 
+  const fetchCategories = await fetch("https://wallid.herokuapp.com/api/categories/?format=json") 
   const categories = await fetchCategories.json()
   console.log(categories)
   if (!categories) {
