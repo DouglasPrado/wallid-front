@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import Header from '../../components/Header';
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 export default function Produtos({ category, categories }) {
-  const router = useRouter()
 
   if (categories.length > 0) {
     return (
@@ -15,19 +15,7 @@ export default function Produtos({ category, categories }) {
 
         <main className="flex flex-col items-center justify-around w-full flex-1 text-center">
           <div className="flex-5 container my-5 px-5">
-              <div className="grid grid-flow-col grid-rows-1 grid-cols-12">
-                <div className="col-span-1">
-                  <button onClick={() => router.back()}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                  </button>
-                </div>
-                
-                <div className="col-span-11">
-                  <span className={`text-xl font-semibold uppercase text-gray-500`} >{category.name}</span>
-                </div>
-              </div>
+              <Header/>
               <div className="grid grid-flow-col grid-rows-1 grid-cols-12">
                 <div className="col-span-1"></div>
                 <div className="col-span-11">
