@@ -2,7 +2,7 @@
 const Navbar = ({navigations}) => {
   return (
     <>
-      <div className="inset-x-0 bottom-0 absolute mb-10">
+      <div className="inset-x-0 bottom-0 absolute mb-5">
         <h1 className="m-3 text-base uppercase text-gray-600">Acesso rápido</h1>  
         <div className="overflow-x-scroll hide-scroll-bar ">
           <div className="flex flex-nowrap">
