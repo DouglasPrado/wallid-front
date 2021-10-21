@@ -10,11 +10,9 @@ export default function Aportes({ categories, balance }) {
         <title>Wallet ID</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Header title="Aportes" />
       <main className="flex flex-col items-center justify-around w-full flex-1 text-center">
-        <Header title="Aportes"/>
         <h1>Aportes</h1>
-        
       </main>
     </div>
   )

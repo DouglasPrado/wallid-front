@@ -43,9 +43,9 @@ class MyDocument extends Document {
         <Head />
         <body>  
           <Main />
-          <div className="flex flex-col items-center justify-around w-full flex-1 text-left">
-            <div className="container">
-              <h1 className="m-5 text-base uppercase text-gray-600">Acesso rápido</h1>
+          <div className="flex flex-col w-full">
+            <div className="">
+              <h1 className="m-3 text-base uppercase text-gray-600">Acesso rápido</h1>
               <Navbar navigations={navigations}/>
             </div>
           </div>

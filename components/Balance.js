@@ -1,8 +1,8 @@
-const Balance = ({balance, blur}) => {
+const Balance = ({balance, blur, cssblur}) => {
   return(
     <div className="flex items-stretch">
-      <div className="box-border h-52 w-52 rounded-full shadow-lg py-20 border-4 border-gray-100 m-10">
-        <span className={`text-2xl font-semibold uppercase text-gray-500 ${blur}`} >{balance.total}</span> <br/>
+      <div className="box-border h-52 w-52 rounded-full shadow-lg py-20 border-4 border-gray-100 m-5">
+        <span className={`text-2xl font-semibold uppercase text-gray-500 ${cssblur}`} >{balance.total}</span> <br/>
         <span className="text-sm text-gray-500 px-2">
           <div className="flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
