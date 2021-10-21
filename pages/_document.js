@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Balance from '../components/Balance'
 import Navbar from '../components/Navbar'
 
 class MyDocument extends Document {
@@ -41,16 +42,9 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body>  
+        <body className="">
           <Main />
-          <div className="flex flex-col w-full">
-            <div className="">
-              <h1 className="m-3 text-base uppercase text-gray-600">Acesso rápido</h1>
-              <Navbar navigations={navigations}/>
-            </div>
-          </div>
-          
-
+          <Navbar navigations={navigations}/>
           <NextScript />
         </body>
       </Html>

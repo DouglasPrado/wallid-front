@@ -2,24 +2,27 @@
 const Navbar = ({navigations}) => {
   return (
     <>
-      <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
-        <div class="flex flex-nowrap">
-          {navigations.map(navigation => (
-            <a href={navigation.link} >
-              <div class="inline-block px-3">
-              <div class="w-32 h-24 max-w-xs overflow-hidden rounded-lg shadow-md border border-gray-100 bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                <div className="grid m-3 ">
-                  <div className="col-span-3 mb-5">
-                    {navigation.icon}
-                  </div>
-                  <div className="">
-                    <h1 className="text-sm text-left font-light uppercase text-gray-500">{navigation.title}</h1>
+      <div className="inset-x-0 bottom-0 absolute mb-10">
+        <h1 className="m-3 text-base uppercase text-gray-600">Acesso rápido</h1>  
+        <div className="overflow-x-scroll hide-scroll-bar ">
+          <div className="flex flex-nowrap">
+            {navigations.map(navigation => (
+              <a href={navigation.link} >
+                <div className="inline-block px-3">
+                <div className="w-32 h-24 max-w-xs overflow-hidden rounded-lg shadow-md border border-gray-100 bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                  <div className="grid m-3 ">
+                    <div className="col-span-3 mb-5">
+                      {navigation.icon}
+                    </div>
+                    <div className="">
+                      <h1 className="text-sm text-left font-light uppercase text-gray-500">{navigation.title}</h1>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </a>
-          ))}   
+            </a>
+            ))}   
+          </div>
         </div>
       </div>
       <style>{`

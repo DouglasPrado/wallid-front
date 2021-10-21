@@ -20,15 +20,15 @@ export default function Home({ categories, balance }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className="flex flex-col items-center justify-around text-center">
+        <main className="w-full">
           <Balance balance={balance} blur={() => clickBlur()} cssblur={blur}/>
-          <div className="w-full">
+          <div className="h-96 overflow-auto hide-scroll-bar ">
             <ul className="mx-3">
             { categories.map((category, index) => {
               if(category.get_balance_total != null){
                 return (
-                  <a href={`/produtos/${category.id}`} >
-                    <li key={index} x-for="item in items" className="rounded-lg shadow border border-gray-50 h-20 my-5">
+                  <a key={index} href={`/produtos/${category.id}`} >
+                    <li x-for="item in items" className="rounded-lg shadow border border-gray-50 h-20 my-5">
                       <div className="flex justify-between items-center h-full">
                         <div className="text-sm font-regular uppercase text-gray-500 pl-5">
                           {category.name}
@@ -43,7 +43,6 @@ export default function Home({ categories, balance }) {
             )}
             </ul>
           </div>
-          
         </main>
       </div>
     )
