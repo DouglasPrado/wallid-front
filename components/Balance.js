@@ -1,6 +1,6 @@
 const Balance = ({balance, blur, cssblur}) => {
   return(
-    <div className="flex justify-center items-center mt-10">
+    <div className="flex justify-center items-center mt-6">
       <div className="p-5">
         <span className={`text-2xl font-semibold  uppercase text-gray-500 ${cssblur}`} >{balance.total}</span> <br/>
         <span className="text-sm text-gray-500 px-1">
