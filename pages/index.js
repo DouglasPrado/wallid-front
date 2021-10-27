@@ -22,7 +22,7 @@ export default function Home({ categories, balance }) {
 
         <main className="w-full ">
           <Balance balance={balance} blur={() => clickBlur()} cssblur={blur}/>
-          <div className="overflow-auto hide-scroll-bar h-full">
+          <div className="overflow-auto hide-scroll-bar h-full mb-40">
             <ul className="mx-3">
             { categories.map((category, index) => {
               if(category.get_balance_total != null){
