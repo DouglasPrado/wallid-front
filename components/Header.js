@@ -10,7 +10,7 @@ const Header = ({title}) => {
           </svg>
         </button>
       </div>
-      <div className="ml-10">
+      <div className="ml-5">
         <span className={`text-xl font-semibold uppercase text-gray-500`} >{title}</span>
       </div>
     </div>
