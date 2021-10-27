@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Balance from '../components/Balance'
 
 export default function Home({ categories, balance }) {
-  const [blur, setBlur] = useState(`blur`)
+  const [blur, setBlur] = useState(null)
   const clickBlur = useCallback(() => {
     if(!blur) {
       setBlur('blur-sm')
