@@ -42,7 +42,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body className="">
+        <body className="bg-gray-50">
           <Main />
           <Navbar navigations={navigations}/>
           <NextScript />

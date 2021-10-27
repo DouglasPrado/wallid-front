@@ -20,9 +20,9 @@ export default function Home({ categories, balance }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className="w-full">
+        <main className="w-full ">
           <Balance balance={balance} blur={() => clickBlur()} cssblur={blur}/>
-          <div className="h-96 overflow-auto hide-scroll-bar ">
+          <div className="overflow-auto hide-scroll-bar h-full">
             <ul className="mx-3">
             { categories.map((category, index) => {
               if(category.get_balance_total != null){
